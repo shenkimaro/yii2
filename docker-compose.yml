@@ -1,0 +1,51 @@
+networks:
+  rede_app:    
+    driver: bridge
+
+services:
+  app01: &app
+    container_name: php-mysql
+    hostname: app01
+    build: 
+      context: ./container/php/
+    networks:
+      rede_app:
+        aliases:
+          - app01
+    environment:
+      - DB_HOSTNAME=db
+      - PORT=9000
+    volumes:
+      - type: bind
+        source: ./backend/app/
+        target: /var/www/   
+        
+  db: &data_base
+    image: mysql:8
+    restart: always
+    hostname: db
+    networks:
+      rede_app:
+        aliases:
+          - db
+    environment:
+      MYSQL_ROOT_PASSWORD: teste
+    ports:
+      - 3307:3306
+        
+  nginx:
+    image: nginx
+    restart: always
+    networks:
+      - rede_app
+    ports:
+      - 9999:80 
+    depends_on:
+      - app01
+    volumes:
+      - type: bind
+        source: ./container/nginx/nginx.conf
+        target: /etc/nginx/nginx.conf 
+      - type: bind
+        source: ./frontend/
+        target: /var/www/html/ 
