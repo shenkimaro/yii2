@@ -18,7 +18,7 @@ services:
     volumes:
       - type: bind
         source: ./backend/app/
-        target: /var/www/   
+        target: /var/www/html/   
         
   db: &data_base
     image: mysql:8
