@@ -54,6 +54,11 @@ class SiteController extends Controller
         ];
     }
 
+    public function actionCumprimentar($mensagem = 'Olá!')
+    {
+        return $this->render('cumprimentar', ['mensagem' => $mensagem]);
+    }
+
     /**
      * Displays homepage.
      *
