@@ -7,7 +7,6 @@ use Yii;
 use yii\rest\Controller;
 use yii\web\Response;
 use app\models\User;
-use app\utilitario\UtilLbr;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
