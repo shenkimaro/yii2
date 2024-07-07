@@ -29,7 +29,7 @@ class AuthController extends Controller
     public function actionLogin()
     {
         $request = Yii::$app->request;
-        $username = $request->post('usuario');
+        $username = $request->post('login');
         $password = $request->post('senha');
         $user = User::findByUsername($username);
 
