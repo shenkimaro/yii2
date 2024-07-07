@@ -19,6 +19,9 @@ services:
       - type: bind
         source: ./backend/app/
         target: /var/www/html/ 
+      - type: bind
+        source: ./uploads/
+        target: /var/www/uploads  
         
   db: &data_base
     image: mysql:8
