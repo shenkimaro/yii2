@@ -5,9 +5,9 @@ networks:
 services:
   app01: &app
     container_name: php-mysql
-    hostname: app01
     build: 
       context: ./container/php/
+    hostname: app01  
     networks:
       rede_app:
         aliases:
@@ -29,9 +29,17 @@ services:
         aliases:
           - db
     environment:
+      MYSQL_DATABASE: processo_seletivo
       MYSQL_ROOT_PASSWORD: teste
     ports:
-      - 3307:3306
+      - 3308:3306  
+    volumes:
+      - type: bind
+        source: ./container/mysql/my.cnf
+        target: /etc/my.cnf
+      - type: bind
+        source: ./container/mysql/init.sql 
+        target: /docker-entrypoint-initdb.d/init.sql   
         
   nginx:
     image: nginx
