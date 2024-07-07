@@ -45,8 +45,21 @@ class ProdutoController extends Controller
 
     public function actionIndex()
     {
+        $query = Produto::find()->alias('p');
+        $query->innerJoin('cliente c', 'p.fk_cliente = c.id');
+
+        $requestParams = Yii::$app->request->queryParams;
+
+        if (!empty($requestParams['nome_cliente'])) {
+            $query->andWhere(['like', 'c.nome', $requestParams['nome_cliente']]);
+        }
+
+        if (!empty($requestParams['cpf'])) {
+            $query->andWhere(['c.cpf' => $requestParams['cpf']]);
+        }
+
         $dataProvider = new ActiveDataProvider([
-            'query' => Produto::find(),
+            'query' => $query,
             'pagination' => [
                 'pageSize' => 10,
             ],
