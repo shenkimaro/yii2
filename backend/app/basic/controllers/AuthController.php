@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\filtro\JwtAuth;
 use Yii;
 use yii\rest\Controller;
 use yii\web\Response;
@@ -34,7 +35,7 @@ class AuthController extends Controller
         $user = User::findByUsername($username);
 
         if ($user && $user->validatePassword($password)) {
-            $id = base64_encode($user->id);
+            $id = base64_encode($user->id + (new JwtAuth())->salt);
             $token = JWT::encode(['id' => $id, 'exp' => time() + 3600], Yii::$app->params['jwtSecretKey'], 'HS256');
             return ['token' => $token];
         } 

@@ -11,6 +11,8 @@ use app\models\User;
 
 class JwtAuth extends ActionFilter
 {
+    public $salt = 450;
+
     public function beforeAction($action)
     {
         $headers = Yii::$app->request->headers;
@@ -21,7 +23,7 @@ class JwtAuth extends ActionFilter
         $token = $matches[1];
         try {
             $decoded = JWT::decode($token, new Key(Yii::$app->params['jwtSecretKey'], 'HS256'));
-            $id = base64_decode($decoded->id);
+            $id = base64_decode($decoded->id) - $this->salt;
             Yii::$app->user->login(User::findIdentity($id));
             return parent::beforeAction($action);
         } catch (\Exception $e) {
