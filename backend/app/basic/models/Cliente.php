@@ -17,7 +17,7 @@ class Cliente extends ActiveRecord
             [['nome', 'cep', 'logradouro', 'numero', 'cidade', 'estado', 'complemento', 'sexo'], 'string'],
             ['cpf', 'validaCPF'],
             ['sexo', 'validaSexo'],
-            [['fotoFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg'],
+            [['foto'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg'],
         ];
     }
 
@@ -63,5 +63,10 @@ class Cliente extends ActiveRecord
             return true;
         } 
         return false;
+    }
+
+    public static function findCliente($id)
+    {
+        return static::findOne($id);
     }
 }
