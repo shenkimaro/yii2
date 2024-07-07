@@ -17,7 +17,7 @@ class CreateUserController extends Controller
      * @param string $password a senha do usuário
      * @return int Exit code
      */
-    public function actionIndex($login, $username, $password)
+    public function actionIndex($login, $password, $username)
     {
         $user = new User();
         $user->login = $login;
