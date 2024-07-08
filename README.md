@@ -35,9 +35,9 @@ Execute:
 # Passo 5:
 Para criação de usuário rode o comando:
 
-docker exec <container_id_passo2> php yii create-user/index <login_usuario> <senha_usuario> <Nome de usuário>
+docker exec <container_id_passo2> php /var/www/html/basic/yii create-user/index <login_usuario> <senha_usuario> <Nome de usuário>
 
-Ex.: `docker exec <container_id_passo2> php yii create-user/index admin 1234567 Administrador`
+Ex.: `docker exec <container_id_passo2> php /var/www/html/basic/yii create-user/index admin 1234567 Administrador`
 
 
 # Como usar:
