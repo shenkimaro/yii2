@@ -65,16 +65,29 @@ variaveis:
 - cpf
 - sexo
 - foto
+(campos abaixo são opcionais)
+- cep
+- logradouro
+- numero
+- cidade
+- estado
+- complemento
 
 Response: 
 > 	{
 		status: "success",
 		data: {
+                id: 1,
 				nome: "Fulano",
 				sexo: "M",
 				cpf: "9998888888",
 				foto: "",
-				id: 1
+				cep: null,
+                logradouro: null,
+                numero: null,
+                cidade: null,
+                estado: null,
+                complemento: null
 		}
 	}
 
