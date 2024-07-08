@@ -15,20 +15,25 @@ Rode o comando:
 docker compose up -d
 
 # Passo 2: 
-List as imagens:
-docker ps
+Listar as imagens. 
+Será mostrado o "container id" das imagens encontre o id da imagem yii2-app01 e guarde esse valor
+`docker ps`
 
 # Passo 3: 
-No passo 2 será mostrado o "container id" das imagens encontre o id da imagem yii2-app01
+Baixar os pacotes para o projeto:
+`docker exec <container_id_passo2> bash -c 'cd basic/ ; composer i'`
 
-Execute: docker exec <container_id_passo2> php /var/www/html/basic/yii migrate --interactive=0
+# Passo 4: 
+Executar os migrations
+Execute: 
+`docker exec <container_id_passo2> php /var/www/html/basic/yii migrate --interactive=0`
 
-# Passo 4:
+# Passo 5:
 Para criação de usuário rode o comando:
 
 docker exec <container_id_passo2> php yii create-user/index <login_usuario> <senha_usuario> <Nome de usuário>
 
-Ex.: docker exec <container_id_passo2> php yii create-user/index admin 1234567 Administrador
+Ex.: `docker exec <container_id_passo2> php yii create-user/index admin 1234567 Administrador`
 
 
 # Como usar:
