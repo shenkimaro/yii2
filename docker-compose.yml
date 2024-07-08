@@ -58,6 +58,3 @@ services:
       - type: bind
         source: ./container/nginx/nginx.conf
         target: /etc/nginx/nginx.conf 
-      - type: bind
-        source: ./frontend/
-        target: /var/www/html/ 
