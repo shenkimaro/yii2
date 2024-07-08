@@ -22,26 +22,18 @@ services:
       # descomente alinha abaixo para usar não perder os dados no caso do container ser reiniciado  
 #      - ./persistencia/uploads/:/var/www/uploads:Z 
         
-  db: &data_base
-    image: mysql:8
+  db_my: &data_base
+    container_name: mysql8_proc
+    build: 
+      context: ./container/mysql/
     restart: always
     hostname: db
     networks:
       rede_app:
         aliases:
           - db
-    environment:
-      MYSQL_DATABASE: processo_seletivo
-      MYSQL_ROOT_PASSWORD: teste
     ports:
-      - 3308:3306  
-    volumes:
-      - type: bind
-        source: ./container/mysql/my.cnf
-        target: /etc/my.cnf
-      - type: bind
-        source: ./container/mysql/init.sql 
-        target: /docker-entrypoint-initdb.d/init.sql  
+      - 3308:3306   
         # descomente a linha abaixo para usar não perder os dados no caso do container ser reiniciado
 #      - ./persistencia/data_base/:/var/lib/mysql/:Z  
         
