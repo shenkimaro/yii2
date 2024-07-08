@@ -19,7 +19,7 @@ $config = [
             'scriptUrl' => 'problema_validacao',
         ],
         'response' => [
-        'format' => yii\web\Response::FORMAT_JSON
+            'format' => yii\web\Response::FORMAT_JSON
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
