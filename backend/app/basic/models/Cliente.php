@@ -69,4 +69,13 @@ class Cliente extends ActiveRecord
     {
         return static::findOne($id);
     }
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            $this->cpf = Conversor::somenteNumero($this->cpf);
+            return true;
+        }
+        return false;
+    }
 }
