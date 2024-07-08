@@ -19,9 +19,8 @@ services:
       - type: bind
         source: ./backend/app/
         target: /var/www/html/ 
-      - type: bind
-        source: ./uploads/
-        target: /var/www/uploads  
+      # descomente alinha abaixo para usar não perder os dados no caso do container ser reiniciado  
+#      - ./persistencia/uploads/:/var/www/uploads:Z 
         
   db: &data_base
     image: mysql:8
@@ -42,7 +41,9 @@ services:
         target: /etc/my.cnf
       - type: bind
         source: ./container/mysql/init.sql 
-        target: /docker-entrypoint-initdb.d/init.sql   
+        target: /docker-entrypoint-initdb.d/init.sql  
+        # descomente a linha abaixo para usar não perder os dados no caso do container ser reiniciado
+#      - ./persistencia/data_base/:/var/lib/mysql/:Z  
         
   nginx:
     image: nginx
