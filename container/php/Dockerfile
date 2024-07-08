@@ -13,3 +13,5 @@ RUN docker-php-ext-install mysqli pdo_mysql zip
 COPY composer.phar /usr/local/bin/composer
 
 RUN ["chmod", "+x", "/usr/local/bin/composer"]
+
+RUN mdir /var/www/uploads/
