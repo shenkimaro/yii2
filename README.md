@@ -12,20 +12,24 @@ Caso queira criar a pasta persistencia depois, basta rodar docker compose down e
 
 # Passo 1: 
 Rode o comando:
-docker compose up -d
+
+`docker compose up -d`
 
 # Passo 2: 
 Listar as imagens. 
 Será mostrado o "container id" das imagens encontre o id da imagem yii2-app01 e guarde esse valor
+
 `docker ps`
 
 # Passo 3: 
 Baixar os pacotes para o projeto:
+
 `docker exec <container_id_passo2> bash -c 'cd basic/ ; composer i'`
 
 # Passo 4: 
 Executar os migrations
 Execute: 
+
 `docker exec <container_id_passo2> php /var/www/html/basic/yii migrate --interactive=0`
 
 # Passo 5:
