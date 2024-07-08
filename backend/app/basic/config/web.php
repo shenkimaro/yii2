@@ -17,6 +17,9 @@ $config = [
             'cookieValidationKey' => 'JuwZFp3NpdvaQlPBt8O9rXc3ycTjGOGj',
             'scriptUrl' => 'problema_validacao',
         ],
+        'response' => [
+        'format' => yii\web\Response::FORMAT_JSON
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
