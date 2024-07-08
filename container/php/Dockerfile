@@ -15,3 +15,5 @@ COPY composer.phar /usr/local/bin/composer
 RUN ["chmod", "+x", "/usr/local/bin/composer"]
 
 RUN mdir /var/www/uploads/
+
+RUN ["chmod", "777", "/var/www/uploads/"]
