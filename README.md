@@ -27,8 +27,7 @@ Baixar os pacotes para o projeto:
 `docker exec <container_id_passo2> bash -c 'cd basic/ ; composer i'`
 
 # Passo 4: 
-Executar os migrations
-Execute: 
+Executar os migrations:
 
 `docker exec <container_id_passo2> php /var/www/html/basic/yii migrate --interactive=0`
 
