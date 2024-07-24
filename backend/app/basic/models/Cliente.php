@@ -65,6 +65,12 @@ class Cliente extends ActiveRecord
         return false;
     }
 
+	public function afterFind()
+    {
+        parent::afterFind();
+        $this->foto= str_replace('/var/www/uploads/', 'http://localhost:9999/foto/', $this->foto);
+    }
+
     public static function findCliente($id)
     {
         return static::findOne($id);
