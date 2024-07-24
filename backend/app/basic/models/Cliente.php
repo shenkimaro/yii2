@@ -10,6 +10,8 @@ class Cliente extends ActiveRecord
 {
     public $fotoFile;
 
+	const uploadPath = '/var/www/uploads/';
+
     public function rules()
     {
         return [
@@ -56,7 +58,7 @@ class Cliente extends ActiveRecord
             if ($this->fotoFile) {
                 //tratando nome do arquivo de modo a remover caracteres estranhos
                 $nome_arquivo = base64_encode(Conversor::somenteAlfaNumerico($this->fotoFile->baseName).$this->cpf);
-                $filePath = '/var/www/uploads/' . $nome_arquivo . '.' . $this->fotoFile->extension;
+                $filePath = self::uploadPath . $nome_arquivo . '.' . $this->fotoFile->extension;
                 $this->fotoFile->saveAs($filePath,false);
                 $this->foto = $filePath;
             }
@@ -68,7 +70,7 @@ class Cliente extends ActiveRecord
 	public function afterFind()
     {
         parent::afterFind();
-        $this->foto= str_replace('/var/www/uploads/', 'http://localhost:9999/foto/', $this->foto);
+        $this->foto= str_replace('/var/www/uploads/', 'http://localhost:9999/foto/view/', $this->foto);
     }
 
     public static function findCliente($id)

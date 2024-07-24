@@ -57,6 +57,9 @@ $config = [
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'user', 'pluralize' => false],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'cliente', 'pluralize' => false],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'produto', 'pluralize' => false],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'foto', 'pluralize' => false, 'extraPatterns' => [
+                                'GET view/<imagem>' => 'view',
+                            ]],
             ],
         ],
     ],

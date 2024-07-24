@@ -4,7 +4,7 @@ networks:
 
 services:
   app01: &app
-    container_name: php-mysql
+    container_name: php-mysql-yii
     build: 
       context: ./container/php/
     hostname: app01  
@@ -33,7 +33,7 @@ services:
         aliases:
           - db
     ports:
-      - 3308:3306   
+      - 3310:3306   
         # descomente a linha abaixo para usar não perder os dados no caso do container ser reiniciado
 #      - ./persistencia/data_base/:/var/lib/mysql/:Z  
         
